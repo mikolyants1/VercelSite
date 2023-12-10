@@ -18,6 +18,10 @@ export interface state {
     data:item[]
 }
 
+export interface context {
+    date:item,
+    sort:(time:string)=>boolean
+}
 export type EvtC = ChangeEvent<HTMLInputElement>
 
 export type action = Record<string,item[]>

@@ -1,7 +1,8 @@
 import { memo } from "react"
-import { MainBlock, MainBlockTitle, MainTitleBorder, MainTitleMain } from "../../style/style";
+import { MainBlock, MainBlockTitle, MainTitleBorder,
+ MainTitleMain } from "../../style/style";
 import { item } from "../../types/type";
-import DataCard from "../ui/DataCard";
+import DataCard from "../ui/Cards/DataCard";
 
 interface props {
     sort:(time:string)=>boolean,

@@ -3,9 +3,9 @@ import { Count, InputsBlock, SerInput, SortOption,
  SortSelect } from '../../style/style'
 import { EvtC, item } from '../../types/type'
 
-const vals:string[] = ["All","Istanbul, Turkey","Online","Caribbean Sea",
-"New York City, USA","Tokyo, Japan","Reykjavik, Iceland","Virtual Mars Habitat",
-"London, UK","Houston, USA","Rio de Janeiro, Brazil"]
+const vals:string[] = ["All",'Istanbul, Turkey', "Online",
+'Caribbean Sea','New York City, USA','Tokyo, Japan','Reykjavik, Iceland',
+'Virtual Mars Habitat','London, UK','Houston, USA','Rio de Janeiro, Brazil']
 
  interface props {
     filter:(e:EvtC)=>void,
@@ -14,6 +14,7 @@ const vals:string[] = ["All","Istanbul, Turkey","Online","Caribbean Sea",
  }
 
 function InputBlock({sort,filter,data}:props):JSX.Element{
+
     return (
         <InputsBlock>
         <SerInput

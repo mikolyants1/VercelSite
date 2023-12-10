@@ -1,8 +1,8 @@
 import {memo} from 'react'
-import { item } from '../../types/type'
+import { item } from '../../../types/type'
 import { ItemBlock, ItemDate, ItemDay, ItemMonth, 
-ItemTitleBorder, ItemTitleMain } from '../../style/style'
-import getMonth,{weekDay} from '../helpers/date'
+ItemTitleBorder, ItemTitleMain } from '../../../style/style'
+import getMonth,{weekDay} from '../../helpers/date'
 
 interface props {
     i:number,

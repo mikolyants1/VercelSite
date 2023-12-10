@@ -1,6 +1,6 @@
 import { useState,useEffect,useReducer,useCallback,useMemo} from 'react'
 import axios,{AxiosResponse} from 'axios'
-import { EvtC, action, data, item, state } from './types/type'
+import { EvtC, action, context, data, item, state } from './types/type'
 import { Wrapper } from './style/style';
 import PersonalCard from './Components/blocks/Personal';
 import Footer from './Components/blocks/Footer';
@@ -9,6 +9,11 @@ import Sub from './Components/ui/Sub';
 import InputBlock from './Components/blocks/Inputs';
 import Main from './Components/blocks/Main';
 import { Error, Loader } from './Components/ui/Loader';
+import {createContext} from 'react'
+
+export const DataContext = createContext<context>({
+  date:null!,sort:_=>true,
+})
 
 function App():JSX.Element {
   const [state,dispatch] = useReducer(
@@ -19,6 +24,7 @@ function App():JSX.Element {
   const [load,setLoad] = useState<boolean>(true);
   const [person,setPerson] = useState<boolean>(false);
   const [id,setId] = useState<item>(null!);
+
   useEffect(():void=>{
     async function getData():Promise<void> {
       return await axios
@@ -72,15 +78,18 @@ function App():JSX.Element {
    return Now < Day;
   },[]);
   
+  const context:context = {
+    date:id,
+    sort:sortedByTime
+  };
+  
   if (load) return <Loader />;
   if (error) return <Error />;
   return (
-    <>
+    <DataContext.Provider value={context}>
       {person&&
       <PersonalCard
-       data={id}
        del={close}
-       sort={sortedByTime}
       />}
       <Wrapper>
         <Header />  
@@ -99,7 +108,7 @@ function App():JSX.Element {
          sort={sortedPast}
          />
       </Wrapper>
-    </>
+    </DataContext.Provider>
   )
 }
 
