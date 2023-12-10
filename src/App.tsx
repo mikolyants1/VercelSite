@@ -8,6 +8,7 @@ import Header from './Components/blocks/Header';
 import Sub from './Components/ui/Sub';
 import InputBlock from './Components/blocks/Inputs';
 import Main from './Components/blocks/Main';
+import { Error, Loader } from './Components/ui/Loader';
 
 function App():JSX.Element {
   const [state,dispatch] = useReducer(
@@ -71,8 +72,8 @@ function App():JSX.Element {
    return Now < Day;
   },[]);
   
-  if (load) return <div>...</div>;
-  if (error) return <div> err ...</div>;
+  if (load) return <Loader />;
+  if (error) return <Error />;
   return (
     <>
       {person&&

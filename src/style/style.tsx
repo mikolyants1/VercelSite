@@ -437,3 +437,28 @@ export const MenuLine:IStyledComponent<"web",BaseObject> = styled.div({
     width:5,
     backgroundColor:"black"
 })
+
+interface LoadProp{
+    spin:number
+}
+
+export const Spin:IStyledComponent<'web',LoadProp>=styled.div`
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  border-left:15px solid transparent;
+  border-top:15px solid black;
+  border-bottom:15px solid black;
+  border-right:15px solid black;
+  rotate:${({spin}:LoadProp)=>spin}deg
+`
+interface block{
+    children:string[]|JSX.Element
+}
+export const Block:IStyledComponent<'web',block>=styled.div`
+width:100%;
+justify-content:center;
+display:flex;
+text-align:center;
+color:black
+`
