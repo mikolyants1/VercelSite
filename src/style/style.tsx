@@ -1,6 +1,7 @@
-import styled,{ keyframes,Keyframes} from "styled-components";
+import styled,{ keyframes} from "styled-components";
 import { BaseObject } from "styled-components/dist/types";
 import { Evt } from "../types/type";
+import Keyframes from "styled-components/dist/models/Keyframes";
 
 const show:Keyframes = keyframes`
  from {
