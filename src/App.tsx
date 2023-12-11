@@ -1,4 +1,4 @@
-import { useState,useEffect,useReducer,useCallback,useMemo} from 'react'
+import { useState,useEffect,useReducer,useCallback} from 'react'
 import axios,{AxiosResponse} from 'axios'
 import { EvtC, action, context, data, item, state } from './types/type'
 import { Wrapper } from './style/style';
@@ -12,14 +12,13 @@ import { Error, Loader } from './Components/ui/Loader';
 import {createContext} from 'react'
 
 export const DataContext = createContext<context>({
-  date:null!,sort:_=>true,
+  item:null!,sort:_=>true,get:_=>{}
 })
 
 function App():JSX.Element {
   const [state,dispatch] = useReducer(
   (prv:state,nxt:action)=>({...prv,...nxt}),
   {origin:null!,data:null!});
-  const memoData:item[] = useMemo(():item[]=>state.data,[state.data])
   const [error,setError] = useState<boolean>(false);
   const [load,setLoad] = useState<boolean>(true);
   const [person,setPerson] = useState<boolean>(false);
@@ -48,41 +47,42 @@ function App():JSX.Element {
     dispatch({data:newData});
   },[state.data])
 
-  const getTitle = useCallback((id:item):void=>{
+  const getTitle = (id:item):void=>{
     setId(id);
     setPerson(true);
-  },[]);
+  };
 
   const close = useCallback(():void=>{
     setPerson(false);
   },[]);
 
-  const sortedByPlace = useCallback((e:EvtC):void => {
-    const sortedPlaces:item[] = e.target.value == 'All' ? [...state.origin]
-    : state.origin.filter((i:item)=>{
+  const sortedByPlace = (e:EvtC):void => {
+    const sortedPlaces:item[] = e.target.value == 'All' ?
+     [...state.origin] : state.origin.filter((i:item)=>{
       if (i.location == e.target.value) return i;
     });
     dispatch({data:sortedPlaces});
-  },[state.data]);
+  };
   
-  const sortedPast = useCallback(():void => {
+  const sortedPast = ():void => {
     const sortedPlaces:item[] =  state.origin.filter((i:item)=>{
       if (new Date(i.date_start) <= new Date(Date.now())) return i;
     });
     dispatch({data:sortedPlaces});
-  },[state.data]);
+  }
 
-  const sortedByTime = useCallback((time:string):boolean => {
+  const sortedByTime = (time:string):boolean => {
    const Now:Date = new Date(Date.now());
    const Day:Date = new Date(time);
    return Now < Day;
-  },[]);
-  
-  const context:context = {
-    date:id,
-    sort:sortedByTime
   };
   
+  const context:context = {
+    item:id,
+    sort:sortedByTime,
+    get:getTitle
+  };
+
   if (load) return <Loader />;
   if (error) return <Error />;
   return (
@@ -95,14 +95,13 @@ function App():JSX.Element {
         <Header />  
         <Sub />
         <InputBlock
-          data={memoData}
+          data={state.data}
           filter={dataFilter}
           sort={sortedByPlace}
          />
         <Main
-         data={memoData}
+         data={state.data}
          sort={sortedByTime}
-         get={getTitle}
         />
         <Footer 
          sort={sortedPast}

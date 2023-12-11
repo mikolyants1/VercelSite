@@ -19,8 +19,9 @@ export interface state {
 }
 
 export interface context {
-    date:item,
-    sort:(time:string)=>boolean
+    item:item,
+    sort:(time:string)=>boolean,
+    get:(id:item)=>void
 }
 export type EvtC = ChangeEvent<HTMLInputElement>
 

@@ -11,8 +11,8 @@ interface props {
 }
 
 function PersonalCard({del}:props):JSX.Element{
-  const {date} = useContext<context>(DataContext);
-  const {title,description}:item = date;
+  const {item} = useContext<context>(DataContext);
+  const {title,description}:item = item;
     return (
         <>
           <GlobalOpacity>

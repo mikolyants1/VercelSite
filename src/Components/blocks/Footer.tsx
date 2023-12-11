@@ -1,6 +1,4 @@
-import { memo } from "react"
 import { FootBlock, FootContent, PastButton } from "../../style/style"
-
 
 interface props {
     sort:()=>void
@@ -29,4 +27,4 @@ function Footer({sort}:props):JSX.Element{
     )
 }
 
-export default memo(Footer)
+export default Footer

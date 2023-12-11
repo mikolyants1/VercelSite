@@ -1,18 +1,19 @@
-import {memo} from 'react'
-import { item } from '../../../types/type'
+import {useContext} from 'react'
+import { context, item } from '../../../types/type'
 import { ItemBlock, ItemDate, ItemDay, ItemMonth, 
 ItemTitleBorder, ItemTitleMain } from '../../../style/style'
 import getMonth,{weekDay} from '../../helpers/date'
+import { DataContext } from '../../../App'
 
 interface props {
     i:number,
     key:string,
-    item:item,
     time:boolean,
-    getId:(id:item)=>void
+    item:item
 }
 
-function Card({i,item,time,getId}:props):JSX.Element{
+function Card({i,time,item}:props):JSX.Element{
+  const {get} = useContext<context>(DataContext);
   const {date_end,date_start,title,location}:item = item;
   const startDay:string = date_start.split("/")[1];
   const endDay:string = date_end.split("/")[1];
@@ -33,7 +34,7 @@ function Card({i,item,time,getId}:props):JSX.Element{
               </ItemDay>
             </ItemMonth>
           </ItemTitleBorder>
-          <ItemTitleMain onClick={()=>getId(item)}>
+          <ItemTitleMain onClick={()=>get(item)}>
              {title}
           </ItemTitleMain>
           <ItemTitleBorder>
@@ -43,4 +44,4 @@ function Card({i,item,time,getId}:props):JSX.Element{
     )
 }
 
-export default memo(Card)
+export default Card

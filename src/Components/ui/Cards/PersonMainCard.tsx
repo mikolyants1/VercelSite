@@ -6,8 +6,8 @@ import { ItemDate, ItemMonth, PersonDate, PersonDay,
  PersonLocation, PersonTime } from '../../../style/style';
 
 function PersonMainCard():JSX.Element{
- const {date,sort} = useContext<context>(DataContext);
- const {date_end,date_start,location}:item = date;
+ const {item,sort} = useContext<context>(DataContext);
+ const {date_end,date_start,location}:item = item;
  const startDay:string = date_start.split("/")[1];
  const endDay:string = date_end.split("/")[1];
  const year:number = new Date(date_start).getFullYear();

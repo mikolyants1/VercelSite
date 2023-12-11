@@ -4,16 +4,16 @@ import { DataContext } from '../../../App';
 import { context } from '../../../types/type';
 
 function PersonFooterCard():JSX.Element{
- const {date} = useContext<context>(DataContext);
+ const {item} = useContext<context>(DataContext);
     return (
         <PersonFooter>
           <PersonEvent>
-            <PersonLink href={date.url}>
+            <PersonLink href={item.url}>
               Visit event's website
             </PersonLink>
           </PersonEvent>
           <PersonEvent>
-            {date.ticket_price}
+            {item.ticket_price}
           </PersonEvent>
         </PersonFooter>
     )

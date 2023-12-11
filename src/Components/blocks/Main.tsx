@@ -1,4 +1,3 @@
-import { memo } from "react"
 import { MainBlock, MainBlockTitle, MainTitleBorder,
  MainTitleMain } from "../../style/style";
 import { item } from "../../types/type";
@@ -7,10 +6,9 @@ import DataCard from "../ui/Cards/DataCard";
 interface props {
     sort:(time:string)=>boolean,
     data:item[],
-    get:(id:item)=>void
 }
 
-function Main({sort,get,data}:props):JSX.Element{
+function Main({sort,data}:props):JSX.Element{
     return (
       <MainBlock>
         <MainBlockTitle>
@@ -28,15 +26,14 @@ function Main({sort,get,data}:props):JSX.Element{
           const time:boolean = sort(item.date_start);
            return (
             <DataCard
+             item={item}
              i={i}
              key={item.date_start}
-             item={item}
              time={time}
-             getId={get}
               />
            )})}
       </MainBlock>
     )
 };
 
-export default memo(Main)
+export default Main

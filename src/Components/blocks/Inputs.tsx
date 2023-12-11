@@ -1,4 +1,3 @@
-import {memo} from 'react'
 import { Count, InputsBlock, SerInput, SortOption,
  SortSelect } from '../../style/style'
 import { EvtC, item } from '../../types/type'
@@ -14,7 +13,6 @@ const vals:string[] = ["All",'Istanbul, Turkey', "Online",
  }
 
 function InputBlock({sort,filter,data}:props):JSX.Element{
-
     return (
         <InputsBlock>
         <SerInput
@@ -35,4 +33,4 @@ function InputBlock({sort,filter,data}:props):JSX.Element{
     )
 }
 
-export default memo(InputBlock)
+export default InputBlock
