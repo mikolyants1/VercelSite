@@ -184,20 +184,18 @@ export const MainBlockTitle:IStyledComponent<"web",BaseObject> = styled.div({
     width:"100%",
     height:50,
     color:"grey",
-    display:"flex",
+    display:"grid",
+    gridTemplateColumns:"30% 40% 30%",
     alignItems:"center",
     fontSize:18,
     backgroundColor:"rgb(245,245,245)"
 });
 
 export const MainTitleBorder:IStyledComponent<"web",BaseObject> = styled.div({
-    width:"30%",
     padding:"0 4px"
 })
 
-export const MainTitleMain:IStyledComponent<"web",BaseObject> = styled(MainTitleBorder)({
- width:"40%"
-})
+export const MainTitleMain:IStyledComponent<"web",BaseObject> = styled(MainTitleBorder)``
 interface item {
     i:number,
     children:JSX.Element[]
