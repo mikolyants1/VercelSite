@@ -1,6 +1,6 @@
-import { ChangeEvent } from "react";
-import styled,{IStyledComponent, keyframes} from "styled-components";
-import { BaseObject, Keyframes } from "styled-components/dist/types";
+import styled,{ keyframes,Keyframes} from "styled-components";
+import { BaseObject } from "styled-components/dist/types";
+import { Evt } from "../types/type";
 
 const show:Keyframes = keyframes`
  from {
@@ -10,7 +10,7 @@ const show:Keyframes = keyframes`
     opacity:1
  }
 `
-export const Wrapper:IStyledComponent<'web',BaseObject> = styled.div`
+export const Wrapper = styled.div<BaseObject>`
     width:900px;
     min-width:300px;
     margin:auto;
@@ -19,7 +19,7 @@ export const Wrapper:IStyledComponent<'web',BaseObject> = styled.div`
     }
 `;
 
-export const HeaderBlock:IStyledComponent<"web",BaseObject> = styled.div({
+export const HeaderBlock = styled.div<BaseObject>({
     width:"100%",
     display:"flex",
     justifyContent:"space-between",
@@ -29,12 +29,12 @@ export const HeaderBlock:IStyledComponent<"web",BaseObject> = styled.div({
     color:"rgb(45,45,45)"
 });
 
-export const HeaderLogo:IStyledComponent<"web",{src:string}> = styled.img({
+export const HeaderLogo = styled.img<{src:string}>({
     width:160,
     height:40
 });
 
-export const HeaderLinks:IStyledComponent<"web",BaseObject> = styled.div`
+export const HeaderLinks = styled.div<BaseObject>`
     display:flex;
     width:420px;
     justify-content:space-between;
@@ -43,13 +43,11 @@ export const HeaderLinks:IStyledComponent<"web",BaseObject> = styled.div`
     }
 `
 
-export const HeaderLink:IStyledComponent<"web",{
-    key:string,children:string
-}> = styled.div({
+export const HeaderLink = styled.div<{key:string,children:string}>({
     textAlign:"center"
 })
 
-export const HeaderButton:IStyledComponent<"web",BaseObject> = styled.button`
+export const HeaderButton= styled.button<BaseObject>`
  width:100px;
  text-align:center;
  height:40px;
@@ -70,7 +68,7 @@ export const HeaderButton:IStyledComponent<"web",BaseObject> = styled.button`
     display:none
  }
 `
-export const SubBlock:IStyledComponent<"web",BaseObject> = styled.div`
+export const SubBlock = styled.div<BaseObject>`
  width:100%;
  display:flex;
  margin-top:30px;
@@ -78,7 +76,7 @@ export const SubBlock:IStyledComponent<"web",BaseObject> = styled.div`
     display:block
  }
 `
-export const SubTitle:IStyledComponent<"web",BaseObject> = styled.div`
+export const SubTitle = styled.div<BaseObject>`
 width:50%;
 font-size:47px;
 font-weight:bold;
@@ -87,21 +85,20 @@ font-weight:bold;
     width:100%
 }
 `
-export const SubMiniTitle:IStyledComponent<"web",BaseObject> = styled.div`
-font-weight:normal;
-font-size:18px;
-margin-top:20px
-`
-export const SubImgBlock:IStyledComponent<"web",BaseObject> = styled(SubTitle)`
+export const SubMiniTitle = styled.div<BaseObject>({
+fontWeight:'normal',
+fontSize:18,
+marginTop:20
+})
+export const SubImgBlock = styled(SubTitle)<BaseObject>`
 display:flex;
 justify-content:flex-end;
-
 @media(max-width:900px){
     justify-content:flex-start
 }
 `
 
-export const SubImg:IStyledComponent<"web",{src:string}> = styled.img`
+export const SubImg = styled.img<{src:string}>`
     width:400px;
     height:400px;
     border-radius:20px;
@@ -112,7 +109,7 @@ export const SubImg:IStyledComponent<"web",{src:string}> = styled.img`
     }
 `
 
-export const InputsBlock:IStyledComponent<"web",BaseObject> = styled.div`
+export const InputsBlock = styled.div<BaseObject>`
     width:100%;
     height:40;
     display:flex;
@@ -124,10 +121,10 @@ export const InputsBlock:IStyledComponent<"web",BaseObject> = styled.div`
     }
 `
 
-export const SerInput:IStyledComponent<"web",{
-    placeholder:string,
-    onChange:(e:ChangeEvent<HTMLInputElement>)=>void
-}> = styled.input`
+export const SerInput = styled.input<{
+placeholder:string,
+onChange:(e:Evt<HTMLInputElement>)=>void
+}>`
  width:65%;
  height:50px;
  border-radius:10px;
@@ -142,10 +139,10 @@ export const SerInput:IStyledComponent<"web",{
     width:100%;
  }
 `
-export const SortSelect:IStyledComponent<"web",{
-    onChange: (e:ChangeEvent<HTMLInputElement>)=>void,
+export const SortSelect = styled.select<{
+    onChange: (e:Evt<HTMLSelectElement>)=>void,
     children:JSX.Element[]
-}> = styled.select`
+}>`
   width:180px;
   height:50px;
   border-radius:10px;
@@ -157,21 +154,21 @@ export const SortSelect:IStyledComponent<"web",{
     width:100%;
  }
 `
-export const SortOption:IStyledComponent<"web",{
-    key:string,value:string,children:string
-}> = styled.option`
- padding:0 5px;
- border:none;
- height:20px;
-`
+export const SortOption = styled.option<{
+ key:string,value:string,children:string
+}>({
+ padding:'0 5px',
+ border:'none',
+ height:20
+})
 
-export const Count:IStyledComponent<"web",BaseObject> = styled.div({
+export const Count = styled.div<BaseObject>({
 textAlign:'center',
 fontSize:18,
 fontWeight:'bold'
 })
 
-export const MainBlock:IStyledComponent<"web",BaseObject> = styled.div({
+export const MainBlock = styled.div<BaseObject>({
     width:"100%",
     marginTop:80,
     borderRadius:20,
@@ -180,7 +177,7 @@ export const MainBlock:IStyledComponent<"web",BaseObject> = styled.div({
     boxShadow:'0 3px 3px 0 grey',
 })
 
-export const MainBlockTitle:IStyledComponent<"web",BaseObject> = styled.div({
+export const MainBlockTitle = styled.div<BaseObject>({
     width:"100%",
     height:50,
     color:"grey",
@@ -191,16 +188,16 @@ export const MainBlockTitle:IStyledComponent<"web",BaseObject> = styled.div({
     backgroundColor:"rgb(245,245,245)"
 });
 
-export const MainTitleBorder:IStyledComponent<"web",BaseObject> = styled.div({
+export const MainTitleBorder = styled.div<BaseObject>({
     padding:"0 4px"
 })
 
-export const MainTitleMain:IStyledComponent<"web",BaseObject> = styled(MainTitleBorder)``
+export const MainTitleMain = styled(MainTitleBorder)<BaseObject>``
 interface item {
     i:number,
     children:JSX.Element[]
 }
-export const ItemBlock:IStyledComponent<"web",item> = styled(MainBlockTitle)`
+export const ItemBlock = styled(MainBlockTitle)<item>`
  background-color:white;
  color:black;
  border-bottom:1px solid grey;
@@ -218,7 +215,7 @@ animation-delay:${({i}:item)=>i}s;
     width:100%
  }
 `
-export const ItemTitleBorder:IStyledComponent<"web",BaseObject> = styled(MainTitleBorder)`
+export const ItemTitleBorder = styled(MainTitleBorder)<BaseObject>`
  font-size:20px;
  font-weight:normal;
  display:flex;
@@ -228,10 +225,11 @@ export const ItemTitleBorder:IStyledComponent<"web",BaseObject> = styled(MainTit
     text-align:start;
  }
 `
-export const ItemTitleMain:IStyledComponent<"web",{
+interface itemProp{
     onClick:()=>void,
     children:string
-}> = styled(ItemTitleBorder)`
+}
+export const ItemTitleMain = styled(ItemTitleBorder)<itemProp>`
 font-weight:bold;
 @media(max-width:900px){
     min-width:150px;
@@ -240,9 +238,9 @@ font-weight:bold;
 `
 interface color {
     color:boolean,
-    children?:any
+    children:never
 }
-export const ItemDate:IStyledComponent<"web",color> = styled.div`
+export const ItemDate = styled.div<any>`
   padding:5px 9px;
   background-color:${({color}:color)=>color ? "#F34F6D" : "grey"};
   color:white;
@@ -253,18 +251,18 @@ export const ItemDate:IStyledComponent<"web",color> = styled.div`
   font-size:18px
 `
 
-export const ItemMonth:IStyledComponent<"web",color> = styled.div`
+export const ItemMonth = styled.div<any>`
  font-size:18px;
  font-weight:bold;
  color:${({color}:color)=>color ? "#F34F6D" : "grey"};
 `
 
-export const ItemDay:IStyledComponent<"web",BaseObject> = styled.div({
+export const ItemDay = styled.div<BaseObject>({
  fontSize:15,
  color:"grey"
 })
 
-export const FootContent:IStyledComponent<"web",BaseObject> = styled.div({
+export const FootContent = styled.div<BaseObject>({
     marginTop:20,
     fontSize:16,
     width:"100%",
@@ -273,13 +271,13 @@ export const FootContent:IStyledComponent<"web",BaseObject> = styled.div({
     justifyContent:"center",
     alignItems:"center"
 })
-export const FootBlock:IStyledComponent<"web",BaseObject> = styled(FootContent)({
+export const FootBlock = styled(FootContent)<BaseObject>({
     textAlign:"start"
 })
-export const PastButton:IStyledComponent<"web",{
+export const PastButton = styled.button<{
     onClick:()=>void,
     children:string
-}> = styled.button({
+}>({
     border:"none",
     fontSize:17,
     fontWeight:500,
@@ -291,7 +289,7 @@ export const PastButton:IStyledComponent<"web",{
     marginLeft:5
 })
 
-export const PersonCard:IStyledComponent<"web",BaseObject> = styled.div`
+export const PersonCard = styled.div<BaseObject>`
     width:45%;
     min-width:200px;
     min-height:340px;
@@ -323,7 +321,7 @@ export const ShowOpacity:Keyframes = keyframes`
     opacity:0.5;
  }
 `
-export const GlobalOpacity:IStyledComponent<"web",BaseObject> = styled.div`
+export const GlobalOpacity = styled.div<BaseObject>`
     width:100%;
     height:100%;
     position:fixed;
@@ -337,28 +335,28 @@ export const GlobalOpacity:IStyledComponent<"web",BaseObject> = styled.div`
     background-color:black;
 `
 
-export const PersonHeader:IStyledComponent<"web",BaseObject> = styled.div({
+export const PersonHeader = styled.div<BaseObject>({
     width:"95%",
     display:"flex",
     margin:"auto",
     alignItems:"center",
     justifyContent:"flex-end",
 })
-export const CloseBlock:IStyledComponent<"web",{
+export const CloseBlock = styled.div<{
     children:string,
     onClick:()=>void
-}> = styled.div({
+}>({
     fontSize:55,
     rotate:"45deg"
 })
 
-export const PersonName:IStyledComponent<"web",BaseObject> = styled.div({
+export const PersonName = styled.div<BaseObject>({
     width:"100%",
     textAlign:"center",
     fontSize:30,
     fontWeight:"bold",
 })
-export const PersonDate:IStyledComponent<"web",BaseObject> = styled.div`
+export const PersonDate = styled.div<BaseObject>`
     display:flex;
     align-items:center;
     margin-top:20px;
@@ -369,7 +367,7 @@ export const PersonDate:IStyledComponent<"web",BaseObject> = styled.div`
         display:block
     }
 `
-export const PersonTime:IStyledComponent<"web",BaseObject> = styled.div`
+export const PersonTime = styled.div<BaseObject>`
     display:flex;
     width:50%;
     font-size:18px;
@@ -382,21 +380,21 @@ export const PersonTime:IStyledComponent<"web",BaseObject> = styled.div`
     }
 `
 
-export const PersonLocation:IStyledComponent<"web",BaseObject> = styled(PersonTime)({
+export const PersonLocation = styled(PersonTime)<BaseObject>({
     color:"#6A42E9",
     fontWeight:"bold",
 })
 
-export const PersonDay:IStyledComponent<"web",BaseObject> = styled(ItemDay)({
+export const PersonDay = styled(ItemDay)<BaseObject>({
     fontSize:18
 })
 
-export const Description:IStyledComponent<"web",BaseObject> = styled.div({
+export const Description = styled.div<BaseObject>({
     width:"90%",
     margin:"30px auto",
     fontSize:18,
 })
-export const PersonFooter:IStyledComponent<"web",BaseObject> = styled.div({
+export const PersonFooter = styled.div<BaseObject>({
     display:"flex",
     justifyContent:"space-between",
     bottom:0,
@@ -405,20 +403,20 @@ export const PersonFooter:IStyledComponent<"web",BaseObject> = styled.div({
     margin:"auto",
 })
 
-export const PersonEvent:IStyledComponent<"web",BaseObject> = styled.div({
+export const PersonEvent = styled.div<BaseObject>({
     width:"50%",
     fontSize:18,
     textAlign:"center"
 })
-export const PersonLink:IStyledComponent<"web",{
+export const PersonLink = styled.a<{
     href:string,
     children:string
-}> = styled.a({
+}>({
     color:"#6A42E9",
     textDecoration:"none"
 })
 
-export const MenuBlock:IStyledComponent<"web",BaseObject> = styled.div`
+export const MenuBlock = styled.div<BaseObject>`
     width:25px;
     height:30px;
     display:none;
@@ -430,7 +428,7 @@ export const MenuBlock:IStyledComponent<"web",BaseObject> = styled.div`
     }
 `
 
-export const MenuLine:IStyledComponent<"web",BaseObject> = styled.div({
+export const MenuLine = styled.div<BaseObject>({
     height:"100%",
     width:5,
     backgroundColor:"black"
@@ -440,7 +438,7 @@ interface LoadProp{
     spin:number
 }
 
-export const Spin:IStyledComponent<'web',LoadProp>=styled.div`
+export const Spin=styled.div<LoadProp>`
   width:60px;
   height:60px;
   border-radius:50%;
@@ -453,7 +451,7 @@ export const Spin:IStyledComponent<'web',LoadProp>=styled.div`
 interface block{
     children:string[]|JSX.Element
 }
-export const Block:IStyledComponent<'web',block>=styled.div`
+export const Block=styled.div<block>`
 width:100%;
 justify-content:center;
 display:flex;

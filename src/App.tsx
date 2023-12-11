@@ -1,6 +1,6 @@
 import { useState,useEffect,useReducer,useCallback} from 'react'
 import axios,{AxiosResponse} from 'axios'
-import { EvtC, action, context, data, item, state } from './types/type'
+import { Evt, action, context, data, item, state } from './types/type'
 import { Wrapper } from './style/style';
 import PersonalCard from './Components/blocks/Personal';
 import Footer from './Components/blocks/Footer';
@@ -37,7 +37,7 @@ function App():JSX.Element {
     getData();
   },[])
   
-  const dataFilter = useCallback((e:EvtC):void => {
+  const dataFilter = useCallback((e:Evt<HTMLInputElement>):void => {
     const text:string = e.target.value.trim().toLocaleLowerCase();
     const newData:item[] = state.origin.filter((i:item)=>{
       if (i.title.toLocaleLowerCase().indexOf(text)!==-1){
@@ -56,7 +56,7 @@ function App():JSX.Element {
     setPerson(false);
   },[]);
 
-  const sortedByPlace = (e:EvtC):void => {
+  const sortedByPlace = (e:Evt<HTMLSelectElement>):void => {
     const sortedPlaces:item[] = e.target.value == 'All' ?
      [...state.origin] : state.origin.filter((i:item)=>{
       if (i.location == e.target.value) return i;

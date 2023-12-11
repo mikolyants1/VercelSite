@@ -23,6 +23,6 @@ export interface context {
     sort:(time:string)=>boolean,
     get:(id:item)=>void
 }
-export type EvtC = ChangeEvent<HTMLInputElement>
+export type Evt<T> = ChangeEvent<T>
 
 export type action = Record<string,item[]>
