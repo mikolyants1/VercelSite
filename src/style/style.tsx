@@ -1,9 +1,8 @@
 import styled,{ keyframes} from "styled-components";
 import { BaseObject } from "styled-components/dist/types";
 import { Evt } from "../types/type";
-import Keyframes from "styled-components/dist/models/Keyframes";
 
-const show:Keyframes = keyframes`
+const show = keyframes`
  from {
     opacity:0
  }
@@ -314,7 +313,7 @@ export const PersonCard = styled.div<BaseObject>`
     }
 `
 
-export const ShowOpacity:Keyframes = keyframes`
+export const ShowOpacity = keyframes`
  from {
     opacity:0;
  }
