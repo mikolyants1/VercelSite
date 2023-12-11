@@ -22,10 +22,10 @@ function PersonMainCard():JSX.Element{
             {startDay}-{endDay}
           </ItemDate>
           <ItemMonth color={time}>
-             {getMonth(month)}
+            {getMonth(month)}
           </ItemMonth>
           <PersonDay>
-            {`${year},${weekStart}-${weekEnd}`}
+            {` ${year},${weekStart}-${weekEnd}`}
           </PersonDay>
         </PersonTime>
         <PersonLocation>

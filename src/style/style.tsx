@@ -364,7 +364,7 @@ export const PersonDate = styled.div<BaseObject>`
     margin:auto;
     
     @media(max-width:800px){
-        display:block
+        flex-wrap:warp
     }
 `
 export const PersonTime = styled.div<BaseObject>`
@@ -376,7 +376,6 @@ export const PersonTime = styled.div<BaseObject>`
 
     @media(max-width:800px){
         width:100%;
-        justify-content:flex-start
     }
 `
 
@@ -386,7 +385,8 @@ export const PersonLocation = styled(PersonTime)<BaseObject>({
 })
 
 export const PersonDay = styled(ItemDay)<BaseObject>({
-    fontSize:18
+    fontSize:18,
+    marginLeft:10
 })
 
 export const Description = styled.div<BaseObject>({
